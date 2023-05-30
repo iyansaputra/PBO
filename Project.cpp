@@ -2,5 +2,6 @@
 
 using namespace std;
 
-cout <"Nopal Anjing" cout<"endl";
+cout < "Nopal Anjing" cout < "endl";
 onojokjok
+    mmkkbkbk
