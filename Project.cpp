@@ -3,6 +3,7 @@
 #include <iostream>
 #include <windows.h>
 #include <math.h>
+#include <string.h>
 
 using namespace std;
 
@@ -59,29 +60,37 @@ void AddDataPegawai(struct Pegawai *p)
 
 int main()
 {
-    Pegawai p[15];
+    Pegawai p[5];
     AddDataPegawai(p);
 
-    int a, b, n, x, y, ip;
+    int a, b = 0, n, x, y, ip, lanjut;
     // a = untuk perulangan, n = untuk pilihan menu utama, x = untuk case 1
 
-    cout << "Menu Kasir" << endl;
-    cout << "1. Admin" << endl;
-    cout << "2. Beli Barang" << endl;
-    cout << "3. Beli Token Listrik" << endl;
-    cout << "4. Exit" << endl;
+    cout << "================================================================" << endl;
+    cout << "\t\t|   Menu Kasir   |" << endl;
+    cout << "================================================================" << endl;
+    cout << "\t\t|1. |\tAdmin" << endl;
+    cout << "\t\t|2. |\tBeli Barang" << endl;
+    cout << "\t\t|3. |\tBeli Token Listrik" << endl;
+    cout << "\t\t|4. |\tExit" << endl;
+    cout << "================================================================" << endl;
     cout << "Pilih : ";
     cin >> n;
+    system("cls");
 
     switch (n)
     {
     case 1:
-        cout << "Menu Admin" << endl;
-        cout << "1. Lihat Stock Barang" << endl;
-        cout << "2. Data Pegawai" << endl;
-        cout << "3. Keluar" << endl;
+        cout << "================================================================" << endl;
+        cout << "\t\t|   Menu Admin   |" << endl;
+        cout << "================================================================" << endl;
+        cout << "\t\t|1. |\tLihat Stock Barang" << endl;
+        cout << "\t\t|2. |\tData Pegawai" << endl;
+        cout << "\t\t|3. |\tKeluar" << endl;
+        cout << "================================================================" << endl;
         cout << "Pilih : ";
         cin >> x;
+        system("cls");
 
         if (x == 1)
         {
@@ -90,39 +99,91 @@ int main()
         else if (x == 2)
         {
             // Edit Data Pegawai
-            cout << "|  ID Pegawai   |  Nama Pegawai    |   Umur    |   Asal Kota   |" << endl;
-            for (a = 0; a < 5; a++)
-            {
-                cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
-            }
-
-            cout << "1. Masukan Data Pegawai Baru" << endl;
-            cout << "2. Edit Data Pegwai" << endl;
-            cout << "3. Hitung Gaji Pegawai" << endl;
+            cout << "================================================================" << endl;
+            cout << "\t\t|   Pegawai   |" << endl;
+            cout << "================================================================" << endl;
+            cout << "\t\t|1. |\tLihat Data Pegawai" << endl;
+            cout << "\t\t|2. |\tMasukan Data Pegawai Baru" << endl;
+            cout << "\t\t|3. |\tEdit Data Pegwai" << endl;
+            cout << "\t\t|4. |\tHitung Gaji Pegawai" << endl;
+            cout << "================================================================" << endl;
+            cout << "Pilih : " << endl;
             cin >> ip;
+            system("cls");
 
             if (ip == 1)
             {
-                cout << "Masukan Data Pegawai Baru" << endl;
-                cout << "===========================" << endl;
-                cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
-                cin >> b;
+                cout << "|  ID Pegawai   |  Nama Pegawai    |   Umur    |   Asal Kota   |" << endl;
+                cout << "================================================================" << endl;
+                for (a = 0; a <= 4; a++)
+                {
+                    cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
+                }
 
                 for (a = 0; a < b; a++)
                 {
-                    cout << "ID Pegawai Baru :" << p[a].Id << endl;
-                    cout << "Nama Pegawai Baru :" << p[a].Nama << endl;
-                    cout << "Umur Pegawai Baru :" << p[a].Umur << endl;
-                    cout << "Asal Kota Pegwai Baru :" << p[a].Asal_Kota << endl;
+                    cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
                 }
+
+                // cout << "Masukan Data Pegawai Baru" << endl;
+                // cout << "===========================" << endl;
+                // cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
+                // cin >> b;
+
+                // for (a = 0; a < b; a++)
+                // {
+                //     cout << "ID Pegawai Baru : ";
+                //     cin >> p[a].Id;
+                //     cout << "Nama Pegawai Baru : ";
+                //     cin >> p[a].Nama;
+                //     cout << "Umur Pegawai Baru : ";
+                //     cin >> p[a].Umur;
+                //     cout << "Asal Kota Pegwai Baru : ";
+                //     cin >> p[a].Asal_Kota;
+
+                //     system("cls");
+                //     cout << "Data Berhasil Ditambahkan" << endl;
+                // }
+                // balekno nk menu awal pal, gaero carane aku
             }
 
             else if (ip == 2)
             {
-                cout << "Wahyu" << endl;
+                do
+                {
+                    cout << "Masukan Data Pegawai Baru" << endl;
+                    cout << "===========================" << endl;
+                    cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
+                    cin >> b;
+
+                    for (a = 0; a < b; a++)
+                    {
+                        cout << "ID Pegawai Baru : ";
+                        cin >> p[a].Id;
+                        cout << "Nama Pegawai Baru : ";
+                        cin >> p[a].Nama;
+                        cout << "Umur Pegawai Baru : ";
+                        cin >> p[a].Umur;
+                        cout << "Asal Kota Pegwai Baru : ";
+                        cin >> p[a].Asal_Kota;
+
+                        system("cls");
+                        cout << "Data Berhasil Ditambahkan" << endl;
+                    }
+
+                    cout << "Input 1 untuk lanjut\ninput 0 untuk berhenti";
+                    cin >> lanjut;
+                    system("cls");
+                } while (lanjut != 0);
+                break;
             }
 
             else if (ip == 3)
+            {
+                cout << "Wahyu02" << endl;
+            }
+
+            else if (ip == 4)
             {
                 cout << "Wahyu02" << endl;
             }
