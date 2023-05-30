@@ -31,10 +31,30 @@ struct Token_Listrik
 
 void AddDataPegawai(struct Pegawai *p)
 {
-    strcpy(p[0].Nama, "Budy");
+    strcpy(p[0].Nama, "Budy Enri");
     strcpy(p[0].Asal_Kota, "Bojonegoro");
     p[0].Umur = 25;
     p[0].Id = 1;
+
+    strcpy(p[1].Nama, "Naswa Sabila");
+    strcpy(p[1].Asal_Kota, "Dahanrejo");
+    p[1].Umur = 20;
+    p[1].Id = 167;
+
+    strcpy(p[2].Nama, "Apri Supri");
+    strcpy(p[2].Asal_Kota, "Dinari");
+    p[2].Umur = 30;
+    p[2].Id = 198;
+
+    strcpy(p[3].Nama, "Saputro Ahmad");
+    strcpy(p[3].Asal_Kota, "PPS Suci");
+    p[3].Umur = 28;
+    p[3].Id = 123;
+
+    strcpy(p[4].Nama, "Aldi Taher");
+    strcpy(p[4].Asal_Kota, "Planet Mars");
+    p[4].Umur = 17;
+    p[4].Id = 169;
 }
 
 int main()
@@ -42,7 +62,7 @@ int main()
     Pegawai p[15];
     AddDataPegawai(p);
 
-    int a, n, x, y, ip;
+    int a, b, n, x, y, ip;
     // a = untuk perulangan, n = untuk pilihan menu utama, x = untuk case 1
 
     cout << "Menu Kasir" << endl;
@@ -85,10 +105,10 @@ int main()
             {
                 cout << "Masukan Data Pegawai Baru" << endl;
                 cout << "===========================" << endl;
-                cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10)" << endl;
-                cin >> ip;
+                cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
+                cin >> b;
 
-                for (a = 0; a < ip; a++)
+                for (a = 0; a < b; a++)
                 {
                     cout << "ID Pegawai Baru :" << p[a].Id << endl;
                     cout << "Nama Pegawai Baru :" << p[a].Nama << endl;
