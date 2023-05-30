@@ -216,3 +216,5 @@ int main()
     while (n != 4)
         ;
 }
+
+//look at the star
