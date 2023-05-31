@@ -197,11 +197,15 @@ int main()
 
             if (ip == 1)
             {
-                cout << "|  ID Pegawai   |  Nama Pegawai    |   Umur    |   Asal Kota   |" << endl;
+                cout << "\t\t|  ID Pegawai   |  Nama Pegawai    |   Umur    |   Asal Kota   |" << endl;
                 cout << "================================================================" << endl;
                 for (a = 0; a <= 4; a++)
                 {
+<<<<<<< HEAD
                     cout << "|" << p[a].Id << "\t\t|" << p[a].Nama << "\t\t|" << p[a].Umur << "\t|" << p[a].Asal_Kota << endl;
+=======
+                    cout <<"\t"<< p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
+>>>>>>> 8ac3436fdab9348ad4c3a105a06946114dfb002a
                 }
 
                 for (a = 0; a < c; a++)
