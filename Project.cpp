@@ -138,12 +138,12 @@ int main()
                 cout << "=========================================" << endl;
                 for (a = 0; a < 4; a++)
                 {
-                    cout << b[a].Nama_Barang << b[a].Price << endl;
+                    cout << "\t|" << b[a].Nama_Barang << "\t|" << b[a].Price << endl;
                 }
 
                 for (a = 0; a < c; a++)
                 {
-                    cout << b[a].Nama_Barang << b[a].Price << endl;
+                    cout << "\t|" << b[a].Nama_Barang << "\t|" << b[a].Price << endl;
                 }
             }
 
@@ -201,12 +201,12 @@ int main()
                 cout << "================================================================" << endl;
                 for (a = 0; a <= 4; a++)
                 {
-                    cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
+                    cout << "|" << p[a].Id << "\t\t|" << p[a].Nama << "\t\t|" << p[a].Umur << "\t|" << p[a].Asal_Kota << endl;
                 }
 
                 for (a = 0; a < c; a++)
                 {
-                    cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
+                    cout << "|" << p[a].Id << "\t\t|" << p[a].Nama << "\t\t|" << p[a].Umur << "\t|" << p[a].Asal_Kota << endl;
                 }
             }
 
@@ -268,26 +268,26 @@ int main()
         cout << "=========================================" << endl;
         for (a = 0; a < 4; a++)
         {
-            cout << b[a].Nama_Barang << b[a].Price << endl;
+            cout << "\t|" << b[a].Nama_Barang << "\t|" << b[a].Price << endl;
         }
 
         for (a = 0; a < c; a++)
         {
-            cout << b[a].Nama_Barang << b[a].Price << endl;
+            cout << "\t|" << b[a].Nama_Barang << "\t|" << b[a].Price << endl;
         }
 
-        do
-        {
-            cout << "=========================================" << endl;
-            cout << "Banyak Barang Yang Akan Dibeli : ";
-            cin >> b_barang;
-        } while (b_barang >= 15);
-        for (a = 0; a < c; a++)
-        {
-            do
-            {
-            }
-        }
+        // do
+        // {
+        //     cout << "=========================================" << endl;
+        //     cout << "Banyak Barang Yang Akan Dibeli : ";
+        //     cin >> b_barang;
+        // } while (b_barang >= 15);
+        // for (a = 0; a < c; a++)
+        // {
+        //     do
+        //     {
+        //     }
+        // }
 
         break;
 
