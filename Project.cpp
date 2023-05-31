@@ -263,14 +263,31 @@ int main()
         break;
 
     case 2:
-        cout << "Menu Beli Barang" << endl;
-        cout << "| No | Nama Barang | Harga |" << endl;
-        cout << "|----|--------------|-------|" << endl;
-        for (a = 0; a < 10; a++)
+        int b_barang;
+        cout << "|   Nama Barang     |   Harga Barang    |" << endl;
+        cout << "=========================================" << endl;
+        for (a = 0; a < 4; a++)
         {
+            cout << b[a].Nama_Barang << b[a].Price << endl;
         }
-        cout << "Pilih : ";
-        cin >> y;
+
+        for (a = 0; a < c; a++)
+        {
+            cout << b[a].Nama_Barang << b[a].Price << endl;
+        }
+
+        do
+        {
+            cout << "=========================================" << endl;
+            cout << "Banyak Barang Yang Akan Dibeli : ";
+            cin >> b_barang;
+        } while (b_barang >= 15);
+        for (a = 0; a < c; a++)
+        {
+            do
+            {
+            }
+        }
 
         break;
 
