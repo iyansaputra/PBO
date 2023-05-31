@@ -30,6 +30,29 @@ struct Token_Listrik
     int Tprice;
 };
 
+void AddDataBarang(struct Barang *b)
+{
+    strcpy(b[0].Nama_Barang, "Deterjen");
+    b[0].Price = 3000;
+    b[0].stock = 15;
+
+    strcpy(b[1].Nama_Barang, "Susu UHT");
+    b[1].Price = 5500;
+    b[1].stock = 35;
+
+    strcpy(b[2].Nama_Barang, "Beras Tawon");
+    b[2].Price = 65700;
+    b[2].stock = 18;
+
+    strcpy(b[3].Nama_Barang, "Aqua Galon");
+    b[3].Price = 19000;
+    b[3].stock = 8;
+
+    strcpy(b[4].Nama_Barang, "Sereal");
+    b[4].Price = 23800;
+    b[4].stock = 30;
+}
+
 void AddDataPegawai(struct Pegawai *p)
 {
     strcpy(p[0].Nama, "Budy Enri");
@@ -62,10 +85,13 @@ int main()
 {
     Pegawai p[5];
     AddDataPegawai(p);
+    Barang b[5];
+    AddDataBarang(b);
 
-    int a, b = 0, n, x, y, ip, lanjut;
+    int a, n, x, y, ip, ib, lanjut, c = 0;
     // a = untuk perulangan, n = untuk pilihan menu utama, x = untuk case 1
 
+    // MENU UTAMA
     cout << "================================================================" << endl;
     cout << "\t\t|   Menu Kasir   |" << endl;
     cout << "================================================================" << endl;
@@ -84,7 +110,7 @@ int main()
         cout << "================================================================" << endl;
         cout << "\t\t|   Menu Admin   |" << endl;
         cout << "================================================================" << endl;
-        cout << "\t\t|1. |\tLihat Stock Barang" << endl;
+        cout << "\t\t|1. |\tData Barang" << endl;
         cout << "\t\t|2. |\tData Pegawai" << endl;
         cout << "\t\t|3. |\tKeluar" << endl;
         cout << "================================================================" << endl;
@@ -94,7 +120,65 @@ int main()
 
         if (x == 1)
         {
-            /* code */
+            // Menu Barang
+            cout << "================================================================" << endl;
+            cout << "\t\t|   Barang   |" << endl;
+            cout << "================================================================" << endl;
+            cout << "\t\t|1. |\tLihat Data Barang" << endl;
+            cout << "\t\t|2. |\tMasukan Data Barang Baru" << endl;
+            cout << "\t\t|3. |\tEdit Data Barang" << endl;
+            cout << "================================================================" << endl;
+            cout << "Pilih : " << endl;
+            cin >> ib;
+            system("cls");
+
+            if (ib == 1)
+            {
+                cout << "|   Nama Barang     |   Harga Barang    |" << endl;
+                cout << "=========================================" << endl;
+                for (a = 0; a < 4; a++)
+                {
+                    cout << b[a].Nama_Barang << b[a].Price << endl;
+                }
+
+                for (a = 0; a < c; a++)
+                {
+                    cout << b[a].Nama_Barang << b[a].Price << endl;
+                }
+            }
+
+            else if (ib == 2)
+            {
+                do
+                {
+                    cout << "Masukan Data Barang Baru" << endl;
+                    cout << "===========================" << endl;
+                    cout << "Masukan Jumlah Data Barang Baru (MAX 10) : ";
+                    cin >> c;
+
+                    for (a = 0; a < c; a++)
+                    {
+                        cout << "Nama Barang Baru : ";
+                        cin >> b[a].Nama_Barang;
+                        cout << "Harga Baru : ";
+                        cin >> b[a].Price;
+                        cout << "Stok Barang Baru : ";
+                        cin >> b[a].stock;
+
+                        system("cls");
+                        cout << "Data Berhasil Ditambahkan" << endl;
+                    }
+
+                    cout << "Input 1 untuk lanjut\ninput 0 untuk berhenti";
+                    cin >> lanjut;
+                    system("cls");
+                } while (lanjut != 0);
+            }
+
+            else if (ib == 3)
+            {
+                cout << "Belum bang" << endl;
+            }
         }
         else if (x == 2)
         {
@@ -120,31 +204,10 @@ int main()
                     cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
                 }
 
-                for (a = 0; a < b; a++)
+                for (a = 0; a < c; a++)
                 {
                     cout << p[a].Id << p[a].Nama << p[a].Umur << p[a].Asal_Kota << endl;
                 }
-
-                // cout << "Masukan Data Pegawai Baru" << endl;
-                // cout << "===========================" << endl;
-                // cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
-                // cin >> b;
-
-                // for (a = 0; a < b; a++)
-                // {
-                //     cout << "ID Pegawai Baru : ";
-                //     cin >> p[a].Id;
-                //     cout << "Nama Pegawai Baru : ";
-                //     cin >> p[a].Nama;
-                //     cout << "Umur Pegawai Baru : ";
-                //     cin >> p[a].Umur;
-                //     cout << "Asal Kota Pegwai Baru : ";
-                //     cin >> p[a].Asal_Kota;
-
-                //     system("cls");
-                //     cout << "Data Berhasil Ditambahkan" << endl;
-                // }
-                // balekno nk menu awal pal, gaero carane aku
             }
 
             else if (ip == 2)
@@ -154,9 +217,9 @@ int main()
                     cout << "Masukan Data Pegawai Baru" << endl;
                     cout << "===========================" << endl;
                     cout << "Masukan Jumlah Data Pegwawai Baru (MAX 10) : ";
-                    cin >> b;
+                    cin >> c;
 
-                    for (a = 0; a < b; a++)
+                    for (a = 0; a < c; a++)
                     {
                         cout << "ID Pegawai Baru : ";
                         cin >> p[a].Id;
@@ -217,4 +280,4 @@ int main()
         ;
 }
 
-//look at the star
+// look at the star
