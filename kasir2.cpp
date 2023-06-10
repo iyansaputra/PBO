@@ -1,7 +1,6 @@
 #include <iostream>
-#include <iomanip>
+#include <string>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 //Bagian Deklarasi Class
@@ -77,7 +76,7 @@ public:
   void cetakTransaksi()
   {
     cout << "Transaksi: " << item->getNama() << " x " << jumlah << endl;
-    cout << "Total price: Rp" << fixed << setprecision(2) << getTotalprice() << endl;
+    cout << "Total price: Rp" << getTotalprice() << endl;
   }
 };
 
@@ -347,7 +346,7 @@ public:
     } while (pilihan != 0);
 
     cout << "Terima kasih telah berbelanja di Toko Serba Ada!" << endl;
-    cout << "Total pembayaran: Rp" << fixed << setprecision(2) << totalPembayaran << endl;
+    cout << "Total pembayaran: Rp" << totalPembayaran << endl;
   }
 
   void menuAdmin() //method
