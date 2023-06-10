@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include <string>
 #include <vector>
 using namespace std;
@@ -109,6 +110,7 @@ public:
 
   void tambahBarang(vector<Item *> &daftarItem) //bagian implementasi fungi / method
   {
+  	system ("cls");
     string nama;
     int price, stok;
     cout << "Masukkan nama barang: ";
@@ -126,6 +128,7 @@ public:
 
   void hapusBarang(vector<Item *> &daftarItem) //method
   {
+  	system ("cls");
     int pilihan;
     cout << "Pilih barang yang ingin dihapus: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -149,6 +152,7 @@ public:
 
   void tambahStok(vector<Item *> &daftarItem) //method
   {
+  	system ("cls");
     int pilihan;
     cout << "Pilih barang yang ingin ditambah stoknya: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -174,6 +178,7 @@ public:
 
   void kurangiStok(vector<Item *> &daftarItem) //method
   {
+  	system ("cls");
     int pilihan;
     cout << "Pilih barang yang ingin dikurangi stoknya: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -206,6 +211,7 @@ public:
 
   void lihatStock(vector<Item *> &daftarItem) //method
   {
+  	system ("cls");
     cout << "===== Stock Barang =====" << endl;
     for (int i = 0; i < daftarItem.size(); i++)
     {
@@ -216,6 +222,7 @@ public:
 
   void tambahPegawai() //method
   {
+  	system ("cls");
     string nama, jabatan;
     cout << "Masukkan nama pegawai: ";
     cin >> nama;
@@ -230,6 +237,7 @@ public:
 
   void hapusPegawai() //method
   {
+  	system ("cls");
     int pilihan;
     cout << "Pilih pegawai yang ingin dihapus: " << endl;
     for (int i = 0; i < daftarPegawai.size(); i++)
@@ -252,6 +260,7 @@ public:
 
   void lihatDataPegawai() //method
   {
+  	system ("cls");
     cout << "===== Data Pegawai =====" << endl;
     for (int i = 0; i < daftarPegawai.size(); i++)
     {
@@ -376,21 +385,27 @@ public:
       switch (pilihan)
       {
       case 1:
+      	system ("cls");
         admin.tambahBarang(daftarItem);
         break;
       case 2:
+      	system ("cls");
         admin.hapusBarang(daftarItem);
         break;
       case 3:
+      	system ("cls");
         admin.tambahStok(daftarItem);
         break;
       case 4:
+      	system ("cls");
         admin.kurangiStok(daftarItem);
         break;
       case 5:
+      	system ("cls");
         admin.lihatStock(daftarItem);
         break;
       case 6:
+      	system ("cls");
         menuDataPegawai(admin);
         break;
       case 0:
@@ -457,6 +472,7 @@ int main()
   int menu;
   do
   {
+  	system ("cls");
     cout << " " << endl;
     cout << "==============================" << endl;
     cout << "         Toko Serba Ada       " << endl;
@@ -470,6 +486,7 @@ int main()
     switch (menu)
     {
     case 1:
+      system ("cls");
       cout << " " << endl;
       cout << "==============================" << endl;
       cout << "          Menu Belanja        " << endl;
