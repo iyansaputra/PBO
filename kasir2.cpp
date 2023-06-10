@@ -1,7 +1,5 @@
 #include <iostream>
-#include <conio.h>
-#include <math.h>
-#include <string.h>
+#include <iomanip>
 #include <vector>
 #include <algorithm>
 using namespace std;
@@ -36,17 +34,20 @@ class Transaksi {
 private:
   Item* item;
   int jumlah;
+  int totalHarga; // Menambahkan atribut totalHarga untuk menyimpan total pembayaran
 
 public:
-  Transaksi(Item* _item, int _jumlah) : item(_item), jumlah(_jumlah) {}
+  Transaksi(Item* _item, int _jumlah) : item(_item), jumlah(_jumlah) {
+  	totalHarga = item->getHarga() * jumlah; // Menghitung totalHarga saat membuat objek Transaksi
+  }
 
   int getTotalHarga() {
-    return item->getHarga() * jumlah;
+    return totalHarga;
   }
 
   void cetakTransaksi() {
     cout << "Transaksi: " << item->getNama() << " x " << jumlah << endl;
-    cout << "Total harga: " << getTotalHarga() << endl;
+    cout << "Total harga: Rp" << fixed << setprecision(2) << getTotalHarga() << endl;
   }
 };
 
@@ -64,24 +65,108 @@ public:
 };
 
 class Admin {
+private:
+	string password; //atribut password
 public:
-  void kelolaStok(Item* item) {
-    int tambahStok;
-    cout << "Tambah stok " << item->getNama() << " sebanyak: ";
-    cin >> tambahStok;
-    item->setStok(item->getStok() + tambahStok);
-    cout << "Stok " << item->getNama() << " berhasil ditambah." << endl;
+	Admin(string _password) : password(_password) {} //add constructor dengan parameter password
+	
+  void tambahBarang(vector<Item*>& daftarItem) {
+    string nama;
+    int harga, stok;
+    cout << "Masukkan nama barang: ";
+    cin >> nama;
+    cout << "Masukkan harga barang: ";
+    cin >> harga;
+    cout << "Masukkan jumlah stok barang: ";
+    cin >> stok;
+
+    Item* itemBaru = new Item(nama, harga, stok);
+    daftarItem.push_back(itemBaru);
+
+    cout << "Barang berhasil ditambahkan." << endl;
   }
 
-  void hapusStok(Item* item) {
-    int kurangiStok;
-    cout << "Kurangi stok " << item->getNama() << " sebanyak: ";
-    cin >> kurangiStok;
-    if (item->getStok() >= kurangiStok) {
-      item->setStok(item->getStok() - kurangiStok);
-      cout << "Stok " << item->getNama() << " berhasil dikurangi." << endl;
+  void hapusBarang(vector<Item*>& daftarItem) {
+    int pilihan;
+    cout << "Pilih barang yang ingin dihapus: " << endl;
+    for (int i = 0; i < daftarItem.size(); i++) {
+      cout << i + 1 << ". " << daftarItem[i]->getNama() << endl;
+    }
+    cout << "Pilih: ";
+    cin >> pilihan;
+
+    if (pilihan >= 1 && pilihan <= daftarItem.size()) {
+      delete daftarItem[pilihan - 1];
+      daftarItem.erase(daftarItem.begin() + pilihan - 1);
+      cout << "Barang berhasil dihapus." << endl;
     } else {
-      cout << "Stok tidak mencukupi!" << endl;
+      cout << "Pilihan tidak valid!" << endl;
+    }
+  }
+
+  void tambahStok(vector<Item*>& daftarItem) {
+    int pilihan;
+    cout << "Pilih barang yang ingin ditambah stoknya: " << endl;
+    for (int i = 0; i < daftarItem.size(); i++) {
+      cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Stok: " << daftarItem[i]->getStok() << endl;
+    }
+    cout << "Pilih: ";
+    cin >> pilihan;
+
+    if (pilihan >= 1 && pilihan <= daftarItem.size()) {
+      int stokBaru;
+      cout << "Masukkan jumlah stok baru: ";
+      cin >> stokBaru;
+      daftarItem[pilihan - 1]->setStok(daftarItem[pilihan - 1]->getStok() + stokBaru);
+      cout << "Stok barang berhasil ditambah." << endl;
+    } else {
+      cout << "Pilihan tidak valid!" << endl;
+    }
+  }
+
+  void kurangiStok(vector<Item*>& daftarItem) {
+    int pilihan;
+    cout << "Pilih barang yang ingin dikurangi stoknya: " << endl;
+    for (int i = 0; i < daftarItem.size(); i++) {
+      cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Stok: " << daftarItem[i]->getStok() << endl;
+    }
+    cout << "Pilih: ";
+    cin >> pilihan;
+
+    if (pilihan >= 1 && pilihan <= daftarItem.size()) {
+      int stokKurang;
+      cout << "Dikurangi berapa stok?: ";
+      cin >> stokKurang;
+      if (daftarItem[pilihan - 1]->getStok() >= stokKurang) {
+        daftarItem[pilihan - 1]->setStok(daftarItem[pilihan - 1]->getStok() - stokKurang);
+        cout << "Stok barang berhasil dikurangi." << endl;
+      } else {
+        cout << "Stok tidak cukup!" << endl;
+      }
+    } else {
+      cout << "Pilihan tidak valid!" << endl;
+    }
+  }
+
+void lihatStock(vector<Item*>& daftarItem) {
+    cout << "===== Stock Barang =====" << endl;
+    for (int i = 0; i < daftarItem.size(); i++) {
+      cout << "Nama Barang: " << daftarItem[i]->getNama() << endl;
+      cout << "Stok: " << daftarItem[i]->getStok() << endl;
+    }
+  }
+  
+	bool login() {
+    string inputPassword;
+    cout << "Masukkan password: ";
+    cin >> inputPassword;
+
+    if (inputPassword == password) {
+      cout << "Login berhasil." << endl;
+      return true;
+    } else {
+      cout << "Akses ditolak." << endl;
+      return false;
     }
   }
 };
@@ -91,7 +176,13 @@ private:
   vector<Item*> daftarItem;
 
 public:
-  void tambahItem(Item* item) {
+  ~Toko() {
+    for (Item* item : daftarItem) {
+      delete item;
+    }
+  }
+
+  void tambahBarang(Item* item) {
     daftarItem.push_back(item);
   }
 
@@ -99,11 +190,16 @@ public:
     Kasir kasir;
     int pilihan;
     int jumlah;
+    int totalPembayaran = 0;
+
+    cout << "===== Toko Serba Ada =====" << endl;
+    cout << "Selamat datang di Toko Serba Ada!" << endl;
+    cout << "Silakan pilih item yang ingin Anda beli:" << endl;
 
     do {
       cout << "===== Menu Belanja =====" << endl;
       for (int i = 0; i < daftarItem.size(); i++) {
-        cout << i+1 << ". " << daftarItem[i]->getNama() << " - Rp" << daftarItem[i]->getHarga() << " (Stok: " << daftarItem[i]->getStok() << ")" << endl;
+        cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Rp" << daftarItem[i]->getHarga() << " (Stok: " << daftarItem[i]->getStok() << ")" << endl;
       }
       cout << "0. Keluar" << endl;
       cout << "Pilih: ";
@@ -114,96 +210,113 @@ public:
         cin >> jumlah;
 
         if (jumlah > 0) {
-          kasir.prosesTransaksi(daftarItem[pilihan-1], jumlah);
+          Item* selectedItem = daftarItem[pilihan - 1];
+          kasir.prosesTransaksi(selectedItem, jumlah);
+          totalPembayaran += selectedItem->getHarga() * jumlah;
+          cout << "Transaksi berhasil!" << endl;
         } else {
           cout << "Jumlah tidak valid!" << endl;
         }
       } else if (pilihan != 0) {
         cout << "Pilihan tidak valid!" << endl;
       }
-
     } while (pilihan != 0);
+
+    cout << "Terima kasih telah berbelanja di Toko Serba Ada!" << endl;
+    cout << "Total pembayaran: Rp" << fixed << setprecision(2) << totalPembayaran << endl;
   }
 
   void menuAdmin() {
-    Admin admin;
+    Admin admin("1234"); //passwordnya
+    if (!admin.login()) {
+    	return; //jika salah, akses ditolak
+	}
+    
     int pilihan;
 
     do {
       cout << "===== Menu Admin =====" << endl;
-      for (int i = 0; i < daftarItem.size(); i++) {
-        cout << i+1 << ". " << daftarItem[i]->getNama() << " - Stok: " << daftarItem[i]->getStok() << endl;
-      }
+      cout << "1. Tambah Barang" << endl;
+      cout << "2. Hapus Barang" << endl;
+      cout << "3. Tambah Stok" << endl;
+      cout << "4. Kurangi Stok" << endl;
+      cout << "5. Lihat Stock Barang" << endl;
       cout << "0. Keluar" << endl;
       cout << "Pilih: ";
       cin >> pilihan;
 
-      if (pilihan >= 1 && pilihan <= daftarItem.size()) {
-        int subPilihan;
-        cout << "===== Menu Kelola Stok =====" << endl;
-        cout << "1. Tambah Stok" << endl;
-        cout << "2. Hapus Stok" << endl;
-        cout << "0. Kembali" << endl;
-        cout << "Pilih: ";
-        cin >> subPilihan;
-
-        switch (subPilihan) {
-          case 1:
-            admin.kelolaStok(daftarItem[pilihan-1]);
-            break;
-          case 2:
-            admin.hapusStok(daftarItem[pilihan-1]);
-            break;
-          case 0:
-            break;
-          default:
-            cout << "Pilihan tidak valid!" << endl;
-            break;
-        }
-      } else if (pilihan != 0) {
-        cout << "Pilihan tidak valid!" << endl;
+      switch (pilihan) {
+        case 1:
+          admin.tambahBarang(daftarItem);
+          break;
+        case 2:
+          admin.hapusBarang(daftarItem);
+          break;
+        case 3:
+          admin.tambahStok(daftarItem);
+          break;
+        case 4:
+          admin.kurangiStok(daftarItem);
+          break;
+        case 5:
+          admin.lihatStock(daftarItem);
+          break;
+        case 0:
+          break;
+        default:
+          cout << "Pilihan tidak valid!" << endl;
+          break;
       }
-
     } while (pilihan != 0);
   }
 };
 
 int main() {
-  Toko toko;
+	Toko toko;
+	
+	// Inisialisasi Item
+	Item item1("Beras Tawon", 65700, 30);
+	Item item2("Aqua Galon", 19000, 30);
+	Item item3("Deterjen", 3000, 30);
+	Item item4("Susu UHT", 5500, 50);
+	
+	// Tambahkan Item ke Toko
+	toko.tambahBarang(&item1);
+	toko.tambahBarang(&item2);
+	toko.tambahBarang(&item3);
 
-  // Inisialisasi Item
-  Item item1("Produk A", 10000, 5);
-  Item item2("Produk B", 15000, 10);
-  Item item3("Produk C", 20000, 3);
+	int menu;
+    do {
+        cout << "==============================" << endl;
+        cout << "         Toko Serba Ada       " << endl;
+        cout << "==============================" << endl;
+        cout << "1. Belanja" << endl;
+        cout << "2. Menu Admin" << endl;
+        cout << "0. Keluar" << endl;
+        cout << "Pilih: ";
+        cin >> menu;
 
-  // Tambahkan Item ke Toko
-  toko.tambahItem(&item1);
-  toko.tambahItem(&item2);
-  toko.tambahItem(&item3);
+        switch (menu) {
+            case 1:
+                cout << "==============================" << endl;
+                cout << "          Menu Belanja        " << endl;
+                cout << "==============================" << endl;
+                toko.mulaiBelanja();
+                break;
+            case 2:
+                cout << "==============================" << endl;
+                cout << "          Menu Admin          " << endl;
+                cout << "==============================" << endl;
+                toko.menuAdmin();
+                break;
+            case 0:
+                cout << "Terima kasih telah mengunjungi Toko Serba Ada!" << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+                break;
+        }
+    } while (menu != 0);
 
-  int menu;
-  do {
-    cout << "===== Menu =====" << endl;
-    cout << "1. Belanja" << endl;
-    cout << "2. Menu Admin" << endl;
-    cout << "0. Keluar" << endl;
-    cout << "Pilih: ";
-    cin >> menu;
-
-    switch (menu) {
-      case 1:
-        toko.mulaiBelanja();
-        break;
-      case 2:
-        toko.menuAdmin();
-        break;
-      case 0:
-        break;
-      default:
-        cout << "Pilihan tidak valid!" << endl;
-        break;
-    }
-  } while (menu != 0);
-
-  return 0;
+    return 0;
 }
