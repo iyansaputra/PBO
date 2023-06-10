@@ -7,18 +7,18 @@ using namespace std;
 class Item {
 private:
   string nama;
-  int harga;
+  int price;
   int stok;
 
 public:
-  Item(string _nama, int _harga, int _stok) : nama(_nama), harga(_harga), stok(_stok) {}
+  Item(string _nama, int _price, int _stok) : nama(_nama), price(_price), stok(_stok) {}
 
   string getNama() {
     return nama;
   }
 
-  int getHarga() {
-    return harga;
+  int getprice() {
+    return price;
   }
 
   int getStok() {
@@ -34,20 +34,20 @@ class Transaksi {
 private:
   Item* item;
   int jumlah;
-  int totalHarga; // Menambahkan atribut totalHarga untuk menyimpan total pembayaran
+  int totalprice; // Menambahkan atribut totalprice untuk menyimpan total pembayaran
 
 public:
   Transaksi(Item* _item, int _jumlah) : item(_item), jumlah(_jumlah) {
-  	totalHarga = item->getHarga() * jumlah; // Menghitung totalHarga saat membuat objek Transaksi
+  	totalprice = item->getprice() * jumlah; // Menghitung totalprice saat membuat objek Transaksi
   }
 
-  int getTotalHarga() {
-    return totalHarga;
+  int getTotalprice() {
+    return totalprice;
   }
 
   void cetakTransaksi() {
     cout << "Transaksi: " << item->getNama() << " x " << jumlah << endl;
-    cout << "Total harga: Rp" << fixed << setprecision(2) << getTotalHarga() << endl;
+    cout << "Total price: Rp" << fixed << setprecision(2) << getTotalprice() << endl;
   }
 };
 
@@ -72,15 +72,15 @@ public:
 	
   void tambahBarang(vector<Item*>& daftarItem) {
     string nama;
-    int harga, stok;
+    int price, stok;
     cout << "Masukkan nama barang: ";
     cin >> nama;
-    cout << "Masukkan harga barang: ";
-    cin >> harga;
+    cout << "Masukkan price barang: ";
+    cin >> price;
     cout << "Masukkan jumlah stok barang: ";
     cin >> stok;
 
-    Item* itemBaru = new Item(nama, harga, stok);
+    Item* itemBaru = new Item(nama, price, stok);
     daftarItem.push_back(itemBaru);
 
     cout << "Barang berhasil ditambahkan." << endl;
@@ -199,7 +199,7 @@ public:
     do {
       cout << "===== Menu Belanja =====" << endl;
       for (int i = 0; i < daftarItem.size(); i++) {
-        cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Rp" << daftarItem[i]->getHarga() << " (Stok: " << daftarItem[i]->getStok() << ")" << endl;
+        cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Rp" << daftarItem[i]->getprice() << " (Stok: " << daftarItem[i]->getStok() << ")" << endl;
       }
       cout << "0. Keluar" << endl;
       cout << "Pilih: ";
@@ -212,7 +212,7 @@ public:
         if (jumlah > 0) {
           Item* selectedItem = daftarItem[pilihan - 1];
           kasir.prosesTransaksi(selectedItem, jumlah);
-          totalPembayaran += selectedItem->getHarga() * jumlah;
+          totalPembayaran += selectedItem->getprice() * jumlah;
           cout << "Transaksi berhasil!" << endl;
         } else {
           cout << "Jumlah tidak valid!" << endl;
