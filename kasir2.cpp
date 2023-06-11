@@ -318,7 +318,7 @@ public:
     int totalPembayaran = 0;
 
     cout << " " << endl;
-    cout << " ===== Toko Serba Ada =====" << endl;
+    cout << " ===== Mandiri Store =====" << endl;
     cout << " Selamat datang di Toko Serba Ada!" << endl;
     cout << " Silakan pilih item yang ingin Anda beli:" << endl;
 
@@ -358,7 +358,7 @@ public:
     } while (pilihan != 0);
 
 	cout << " Total pembayaran: Rp" << totalPembayaran << endl;
-    cout << " Terima kasih telah berbelanja di Toko Serba Ada!" << endl;
+    cout << " Terima kasih telah berbelanja di Mandiri Store!" << endl;
   }
 
   void menuAdmin() //method
@@ -478,7 +478,7 @@ int main()
   {
     cout << " " << endl;
     cout << " ==============================" << endl;
-    cout << "         Toko Serba Ada       " << endl;
+    cout << "          Mandiri Store        " << endl;
     cout << " ==============================" << endl;
     cout << " 1. Belanja" << endl;
     cout << " 2. Menu Admin" << endl;
@@ -503,7 +503,7 @@ int main()
       toko.menuAdmin();
       break;
     case 0:
-      cout << " Terima kasih telah mengunjungi Toko Serba Ada!" << endl;
+      cout << " Terima kasih telah mengunjungi Mandiri Store!" << endl;
       break;
     default:
       cout << " Pilihan tidak valid!" << endl;
