@@ -273,10 +273,11 @@ public:
   {
     system("cls");
     cout << " ===== Data Pegawai =====" << endl;
+    cout << "-----------------------------------------------------" << endl;
+    cout << "\t|   Nama    |    Umur    |     Asal Kota     |" << endl;
     for (int i = 0; i < daftarPegawai.size(); i++)
     {
-      cout << "|   Nama    |    Umur    |     Asal Kota     |" << endl;
-      cout << "\t" << daftarPegawai[i].getNama() << "\t" << daftarPegawai[i].getumur() << "\t" << daftarPegawai[i].getkota() << endl;
+      cout << "\t" << daftarPegawai[i].getNama() << "\t\t" << daftarPegawai[i].getumur() << "\t" << daftarPegawai[i].getkota() << endl;
     }
   }
 
@@ -328,7 +329,6 @@ public:
     cout << " " << endl;
     cout << " ===== Mandiri Store =====" << endl;
     cout << " Selamat datang di Toko Serba Ada!" << endl;
-    cout << " Silakan pilih item yang ingin Anda beli:" << endl;
 
     do
     {
@@ -340,7 +340,9 @@ public:
       {
         cout << i + 1 << "\t" << daftarItem[i]->getNama() << "\t\tRp" << daftarItem[i]->getprice() << endl;
       }
+      cout << "-----------------------------------------------------" << endl;
       cout << " 0. Keluar" << endl;
+      cout << " Silakan pilih item yang ingin Anda beli:" << endl;
       cout << " Pilih: ";
       cin >> pilihan;
 
