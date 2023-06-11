@@ -118,7 +118,7 @@ public:
     int price, stok;
     cout << " Masukkan nama barang: ";
     cin >> nama;
-    cout << " Masukkan price barang: ";
+    cout << " Masukkan harga barang: ";
     cin >> price;
     cout << " Masukkan jumlah stok barang: ";
     cin >> stok;
