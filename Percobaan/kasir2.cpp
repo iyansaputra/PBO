@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 
-//Bagian Deklarasi Class
-class Item //pendeklarasian class item
+// Bagian Deklarasi Class
+class Item // pendeklarasian class item
 {
 private:
   string nama;
@@ -13,10 +13,10 @@ private:
   int stok;
 
 public:
-  //ada 1 konstruktor menerima 3 parameter, _nama, _stok, _price.
+  // ada 1 konstruktor menerima 3 parameter, _nama, _stok, _price.
   Item(string _nama, int _price, int _stok) : nama(_nama), price(_price), stok(_stok) {}
 
-  string getNama() //method (agar bisa mengakses nama)
+  string getNama() // method (agar bisa mengakses nama)
   {
     return nama;
   }
@@ -26,43 +26,49 @@ public:
     return price;
   }
 
-  int getStok() //mengembalikan nilai stok
+  int getStok() // mengembalikan nilai stok
   {
     return stok;
   }
 
-  void setStok(int _stok) //mengubah nilai stok
+  void setStok(int _stok) // mengubah nilai stok
   {
     stok = _stok;
   }
 };
 
-//deklarasi class pegawai
+// deklarasi class pegawai
 class Pegawai
 {
 private:
   string nama;
-  string jabatan;
+  string umur;
+  string kota;
 
 public:
-  //1 konstruktor, 2 parameter
-  Pegawai(string _nama, string _jabatan) : nama(_nama), jabatan(_jabatan) {}
+  // 1 konstruktor, 2 parameter
+  Pegawai(string _nama, string _umur, string _kota) : nama(_nama), umur(_umur), kota(_kota) {}
 
-  string getNama() //mengembalikan nilai variabel Nama
+  string getNama() // mengembalikan nilai variabel Nama
   {
     return nama;
   }
 
-  string getJabatan() //mengembalikan nilai variabel Jabatan
+  string getumur() // mengembalikan nilai variabel Umur
   {
-    return jabatan;
+    return umur;
+  }
+
+  string getkota() // mengembalikan nilai variabel Asal Kota
+  {
+    return kota;
   }
 };
 
 class Transaksi
 {
 private:
-  Item *item; //pointer
+  Item *item; // pointer
   int jumlah;
   int totalprice; // Menambahkan atribut totalprice untuk menyimpan total pembayaran
 
@@ -72,12 +78,12 @@ public:
     totalprice = item->getprice() * jumlah; // Menghitung totalprice saat membuat objek Transaksi
   }
 
-  int getTotalprice() //method
+  int getTotalprice() // method
   {
     return totalprice;
   }
 
-  void cetakTransaksi() //method
+  void cetakTransaksi() // method
   {
     cout << " Transaksi: " << item->getNama() << " x " << jumlah << endl;
     cout << " Total price: Rp" << getTotalprice() << endl;
@@ -111,9 +117,9 @@ private:
 public:
   Admin(string _password) : password(_password) {} // add constructor dengan parameter password
 
-  void tambahBarang(vector<Item *> &daftarItem) //bagian implementasi fungi / method
+  void tambahBarang(vector<Item *> &daftarItem) // bagian implementasi fungi / method
   {
-  	system ("cls");
+    system("cls");
     string nama;
     int price, stok;
     cout << " Masukkan nama barang: ";
@@ -129,9 +135,9 @@ public:
     cout << " Barang berhasil ditambahkan." << endl;
   }
 
-  void hapusBarang(vector<Item *> &daftarItem) //method
+  void hapusBarang(vector<Item *> &daftarItem) // method
   {
-  	system ("cls");
+    system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin dihapus: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -153,9 +159,9 @@ public:
     }
   }
 
-  void tambahStok(vector<Item *> &daftarItem) //method
+  void tambahStok(vector<Item *> &daftarItem) // method
   {
-  	system ("cls");
+    system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin ditambah stoknya: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -179,9 +185,9 @@ public:
     }
   }
 
-  void kurangiStok(vector<Item *> &daftarItem) //method
+  void kurangiStok(vector<Item *> &daftarItem) // method
   {
-  	system ("cls");
+    system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin dikurangi stoknya: " << endl;
     for (int i = 0; i < daftarItem.size(); i++)
@@ -212,9 +218,9 @@ public:
     }
   }
 
-  void lihatStock(vector<Item *> &daftarItem) //method
+  void lihatStock(vector<Item *> &daftarItem) // method
   {
-  	system ("cls");
+    system("cls");
     cout << " ===== Stock Barang =====" << endl;
     for (int i = 0; i < daftarItem.size(); i++)
     {
@@ -223,29 +229,31 @@ public:
     }
   }
 
-  void tambahPegawai() //method
+  void tambahPegawai() // method
   {
-  	system ("cls");
-    string nama, jabatan;
+    system("cls");
+    string nama, umur, kota;
     cout << " Masukkan nama pegawai: ";
     cin >> nama;
-    cout << " Masukkkan jabatan pegawai: ";
-    cin >> jabatan;
+    cout << " Masukkan Umur Pegawai: ";
+    cin >> umur;
+    cout << " Masukkan Asal Kota Pegawai: ";
+    cin >> kota;
 
-    Pegawai pegawai(nama, jabatan);
+    Pegawai pegawai(nama, umur, kota);
     daftarPegawai.push_back(pegawai);
 
     cout << " Berhasil ditambahkan." << endl;
   }
 
-  void hapusPegawai() //method
+  void hapusPegawai() // method
   {
-  	system ("cls");
+    system("cls");
     int pilihan;
     cout << " Pilih pegawai yang ingin dihapus: " << endl;
     for (int i = 0; i < daftarPegawai.size(); i++)
     {
-      cout << i + 1 << ". " << daftarPegawai[i].getNama() << " - " << daftarPegawai[i].getJabatan() << endl;
+      cout << i + 1 << ". " << daftarPegawai[i].getNama() << " - " << endl;
     }
     cout << " Pilih: ";
     cin >> pilihan;
@@ -261,18 +269,18 @@ public:
     }
   }
 
-  void lihatDataPegawai() //method
+  void lihatDataPegawai() // method
   {
-  	system ("cls");
+    system("cls");
     cout << " ===== Data Pegawai =====" << endl;
     for (int i = 0; i < daftarPegawai.size(); i++)
     {
-      cout << " Nama: " << daftarPegawai[i].getNama() << endl;
-      cout << " Jabatan: " << daftarPegawai[i].getJabatan() << endl;
+      cout << "|   Nama    |    Umur    |     Asal Kota     |" << endl;
+      cout << "\t" << daftarPegawai[i].getNama() << "\t" << daftarPegawai[i].getumur() << "\t" << daftarPegawai[i].getkota() << endl;
     }
   }
 
-  bool login() //method
+  bool login() // method
   {
     string inputPassword;
     cout << " Masukkan password: ";
@@ -305,12 +313,12 @@ public:
     }
   }
 
-  void tambahBarang(Item *item) //method
+  void tambahBarang(Item *item) // method
   {
     daftarItem.push_back(item);
   }
 
-  void mulaiBelanja() //method
+  void mulaiBelanja() // method
   {
     Kasir kasir;
     int pilihan;
@@ -326,9 +334,11 @@ public:
     {
       cout << " " << endl;
       cout << " ===== Menu Belanja =====" << endl;
+      cout << "No  |     Nama Barang     |     Harga Barang    |" << endl;
+      cout << "-----------------------------------------------------" << endl;
       for (int i = 0; i < daftarItem.size(); i++)
       {
-        cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Rp" << daftarItem[i]->getprice() << " (Stok: " << daftarItem[i]->getStok() << ")" << endl;
+        cout << i + 1 << "\t" << daftarItem[i]->getNama() << "\t\tRp" << daftarItem[i]->getprice() << endl;
       }
       cout << " 0. Keluar" << endl;
       cout << " Pilih: ";
@@ -357,11 +367,11 @@ public:
       }
     } while (pilihan != 0);
 
-	cout << " Total pembayaran: Rp" << totalPembayaran << endl;
+    cout << " Total pembayaran: Rp" << totalPembayaran << endl;
     cout << " Terima kasih telah berbelanja di Mandiri Store!" << endl;
   }
 
-  void menuAdmin() //method
+  void menuAdmin() // method
   {
     Admin admin("1234"); // passwordnya
     if (!admin.login())
@@ -382,33 +392,34 @@ public:
       cout << " 5. Lihat Stock Barang" << endl;
       cout << " 6. Data Pegawai" << endl;
       cout << " 0. Keluar" << endl;
+      cout << " ==============================" << endl;
       cout << " Pilih: ";
       cin >> pilihan;
 
       switch (pilihan)
       {
       case 1:
-      	system ("cls");
+        system("cls");
         admin.tambahBarang(daftarItem);
         break;
       case 2:
-      	system ("cls");
+        system("cls");
         admin.hapusBarang(daftarItem);
         break;
       case 3:
-      	system ("cls");
+        system("cls");
         admin.tambahStok(daftarItem);
         break;
       case 4:
-      	system ("cls");
+        system("cls");
         admin.kurangiStok(daftarItem);
         break;
       case 5:
-      	system ("cls");
+        system("cls");
         admin.lihatStock(daftarItem);
         break;
       case 6:
-      	system ("cls");
+        system("cls");
         menuDataPegawai(admin);
         break;
       case 0:
@@ -420,7 +431,7 @@ public:
     } while (pilihan != 0);
   }
 
-  void menuDataPegawai(Admin &admin) //method
+  void menuDataPegawai(Admin &admin) // method
   {
     int pilihan;
 
@@ -432,6 +443,7 @@ public:
       cout << " 2. Tambah Data" << endl;
       cout << " 3. Hapus Data" << endl;
       cout << " 0. Kembali" << endl;
+      cout << " ==============================" << endl;
       cout << " Pilih: ";
       cin >> pilihan;
 
@@ -456,7 +468,7 @@ public:
   }
 };
 
-//Bagian main (fungsi utama)
+// Bagian main (fungsi utama)
 int main()
 {
   Toko toko;
@@ -483,13 +495,14 @@ int main()
     cout << " 1. Belanja" << endl;
     cout << " 2. Menu Admin" << endl;
     cout << " 0. Keluar" << endl;
+    cout << " ==============================" << endl;
     cout << " Pilih: ";
     cin >> menu;
 
     switch (menu)
     {
     case 1:
-      system ("cls");
+      system("cls");
       cout << " " << endl;
       cout << " ==============================" << endl;
       cout << "          Menu Belanja        " << endl;
