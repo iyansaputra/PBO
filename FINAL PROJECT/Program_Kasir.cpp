@@ -360,11 +360,14 @@ public:
           cout << " Jumlah tidak valid!" << endl;
         }
       }
+
       else if (pilihan != 0)
       {
         cout << " Pilihan tidak valid!" << endl;
       }
-    } while (pilihan != 0);
+
+    } 
+    while (pilihan != 0);
 
     cout << " Total pembayaran: Rp" << totalPembayaran << endl;
     cout << " Terima kasih telah berbelanja di Mandiri Store!" << endl;
