@@ -4,8 +4,7 @@
 #include <vector>
 using namespace std;
 
-// Bagian Deklarasi Class
-class Item // pendeklarasian class item
+class Item
 {
 private:
   string nama;
@@ -13,10 +12,9 @@ private:
   int stok;
 
 public:
-  // ada 1 konstruktor menerima 3 parameter, _nama, _stok, _price.
   Item(string _nama, int _price, int _stok) : nama(_nama), price(_price), stok(_stok) {}
 
-  string getNama() // method (agar bisa mengakses nama)
+  string getNama()
   {
     return nama;
   }
@@ -26,18 +24,17 @@ public:
     return price;
   }
 
-  int getStok() // mengembalikan nilai stok
+  int getStok() 
   {
     return stok;
   }
 
-  void setStok(int _stok) // mengubah nilai stok
+  void setStok(int _stok)
   {
     stok = _stok;
   }
 };
 
-// deklarasi class pegawai
 class Pegawai
 {
 private:
@@ -46,20 +43,19 @@ private:
   string kota;
 
 public:
-  // 1 konstruktor, 2 parameter
   Pegawai(string _nama, string _umur, string _kota) : nama(_nama), umur(_umur), kota(_kota) {}
 
-  string getNama() // mengembalikan nilai variabel Nama
+  string getNama()
   {
     return nama;
   }
 
-  string getumur() // mengembalikan nilai variabel Umur
+  string getumur()
   {
     return umur;
   }
 
-  string getkota() // mengembalikan nilai variabel Asal Kota
+  string getkota()
   {
     return kota;
   }
@@ -68,22 +64,22 @@ public:
 class Transaksi
 {
 private:
-  Item *item; // pointer
+  Item *item;
   int jumlah;
-  int totalprice; // Menambahkan atribut totalprice untuk menyimpan total pembayaran
+  int totalprice;
 
 public:
   Transaksi(Item *_item, int _jumlah) : item(_item), jumlah(_jumlah)
   {
-    totalprice = item->getprice() * jumlah; // Menghitung totalprice saat membuat objek Transaksi
+    totalprice = item->getprice() * jumlah;
   }
 
-  int getTotalprice() // method
+  int getTotalprice() 
   {
     return totalprice;
   }
 
-  void cetakTransaksi() // method
+  void cetakTransaksi() 
   {
     cout << " Transaksi: " << item->getNama() << " x " << jumlah << endl;
     cout << " Total price: Rp" << getTotalprice() << endl;
@@ -111,13 +107,13 @@ public:
 class Admin
 {
 private:
-  string password;               // atribut password
-  vector<Pegawai> daftarPegawai; // add vector pegawai
+  string password;               
+  vector<Pegawai> daftarPegawai; 
 
 public:
-  Admin(string _password) : password(_password) {} // add constructor dengan parameter password
+  Admin(string _password) : password(_password) {} 
 
-  void tambahBarang(vector<Item *> &daftarItem) // bagian implementasi fungi / method
+  void tambahBarang(vector<Item *> &daftarItem) 
   {
     system("cls");
     string nama;
@@ -135,7 +131,7 @@ public:
     cout << " Barang berhasil ditambahkan." << endl;
   }
 
-  void hapusBarang(vector<Item *> &daftarItem) // method
+  void hapusBarang(vector<Item *> &daftarItem) 
   {
     system("cls");
     int pilihan;
@@ -159,7 +155,7 @@ public:
     }
   }
 
-  void tambahStok(vector<Item *> &daftarItem) // method
+  void tambahStok(vector<Item *> &daftarItem) 
   {
     system("cls");
     int pilihan;
@@ -185,7 +181,7 @@ public:
     }
   }
 
-  void kurangiStok(vector<Item *> &daftarItem) // method
+  void kurangiStok(vector<Item *> &daftarItem) 
   {
     system("cls");
     int pilihan;
@@ -218,7 +214,7 @@ public:
     }
   }
 
-  void lihatStock(vector<Item *> &daftarItem) // method
+  void lihatStock(vector<Item *> &daftarItem) 
   {
     system("cls");
     cout << " ===== Stock Barang =====" << endl;
@@ -229,7 +225,7 @@ public:
     }
   }
 
-  void tambahPegawai() // method
+  void tambahPegawai() 
   {
     system("cls");
     string nama, umur, kota;
@@ -246,7 +242,7 @@ public:
     cout << " Berhasil ditambahkan." << endl;
   }
 
-  void hapusPegawai() // method
+  void hapusPegawai() 
   {
     system("cls");
     int pilihan;
@@ -269,7 +265,7 @@ public:
     }
   }
 
-  void lihatDataPegawai() // method
+  void lihatDataPegawai() 
   {
     system("cls");
     cout << " ===== Data Pegawai =====" << endl;
@@ -281,7 +277,7 @@ public:
     }
   }
 
-  bool login() // method
+  bool login() 
   {
     string inputPassword;
     cout << " Masukkan password: ";
@@ -314,12 +310,12 @@ public:
     }
   }
 
-  void tambahBarang(Item *item) // method
+  void tambahBarang(Item *item)
   {
     daftarItem.push_back(item);
   }
 
-  void mulaiBelanja() // method
+  void mulaiBelanja()
   {
     Kasir kasir;
     int pilihan;
@@ -373,12 +369,12 @@ public:
     cout << " Terima kasih telah berbelanja di Mandiri Store!" << endl;
   }
 
-  void menuAdmin() // method
+  void menuAdmin() 
   {
-    Admin admin("1234"); // passwordnya
+    Admin admin("1234");
     if (!admin.login())
     {
-      return; // jika salah, akses ditolak
+      return; 
     }
 
     int pilihan;
@@ -433,7 +429,7 @@ public:
     } while (pilihan != 0);
   }
 
-  void menuDataPegawai(Admin &admin) // method
+  void menuDataPegawai(Admin &admin)
   {
     int pilihan;
 
@@ -475,13 +471,11 @@ int main()
 {
   Toko toko;
 
-  // Inisialisasi Item
   Item item1(" Beras Tawon", 65700, 30);
   Item item2(" Aqua Galon", 19000, 30);
   Item item3(" Deterjen", 3000, 30);
   Item item4(" Susu UHT", 5500, 50);
 
-  // Tambahkan Item ke Toko
   toko.tambahBarang(&item1);
   toko.tambahBarang(&item2);
   toko.tambahBarang(&item3);
