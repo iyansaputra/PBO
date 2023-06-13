@@ -443,7 +443,6 @@ public:
   }
 };
 
-// Bagian main (fungsi utama)
 int main()
 {
   Toko toko;
