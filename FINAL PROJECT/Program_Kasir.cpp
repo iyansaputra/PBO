@@ -350,7 +350,7 @@ public:
   void menuAdmin() 
   {
     Admin admin("1234");
-    
+
     if (!admin.login()){
       return; 
     }
@@ -459,6 +459,7 @@ int main()
   toko.tambahBarang(&item4);
 
   int menu;
+
   do
   {
     cout << " " << endl;
