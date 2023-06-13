@@ -92,14 +92,12 @@ class Kasir
 public:
   void prosesTransaksi(Item *item, int jumlah)
   {
-    if (item->getStok() >= jumlah)
-    {
+    if (item->getStok() >= jumlah){
       item->setStok(item->getStok() - jumlah);
       Transaksi transaksi(item, jumlah);
       transaksi.cetakTransaksi();
     }
-    else
-    {
+    else{
       cout << " Stok tidak cukup!" << endl;
     }
   }
@@ -137,21 +135,18 @@ public:
     system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin dihapus: " << endl;
-    for (int i = 0; i < daftarItem.size(); i++)
-    {
+    for (int i = 0; i < daftarItem.size(); i++){
       cout << i + 1 << ". " << daftarItem[i]->getNama() << endl;
     }
     cout << " Pilih: ";
     cin >> pilihan;
 
-    if (pilihan >= 1 && pilihan <= daftarItem.size())
-    {
+    if (pilihan >= 1 && pilihan <= daftarItem.size()){
       delete daftarItem[pilihan - 1];
       daftarItem.erase(daftarItem.begin() + pilihan - 1);
       cout << " Barang berhasil dihapus." << endl;
     }
-    else
-    {
+    else{
       cout << " Pilihan tidak valid!" << endl;
     }
   }
@@ -161,23 +156,20 @@ public:
     system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin ditambah stoknya: " << endl;
-    for (int i = 0; i < daftarItem.size(); i++)
-    {
+    for (int i = 0; i < daftarItem.size(); i++){
       cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Stok: " << daftarItem[i]->getStok() << endl;
     }
     cout << " Pilih: ";
     cin >> pilihan;
 
-    if (pilihan >= 1 && pilihan <= daftarItem.size())
-    {
+    if (pilihan >= 1 && pilihan <= daftarItem.size()){
       int stokBaru;
       cout << " Masukkan jumlah stok baru: ";
       cin >> stokBaru;
       daftarItem[pilihan - 1]->setStok(daftarItem[pilihan - 1]->getStok() + stokBaru);
       cout << " Stok barang berhasil ditambah." << endl;
     }
-    else
-    {
+    else{
       cout << " Pilihan tidak valid!" << endl;
     }
   }
@@ -187,30 +179,25 @@ public:
     system("cls");
     int pilihan;
     cout << " Pilih barang yang ingin dikurangi stoknya: " << endl;
-    for (int i = 0; i < daftarItem.size(); i++)
-    {
+    for (int i = 0; i < daftarItem.size(); i++){
       cout << i + 1 << ". " << daftarItem[i]->getNama() << " - Stok: " << daftarItem[i]->getStok() << endl;
     }
     cout << " Pilih: ";
     cin >> pilihan;
 
-    if (pilihan >= 1 && pilihan <= daftarItem.size())
-    {
+    if (pilihan >= 1 && pilihan <= daftarItem.size()){
       int stokKurang;
       cout << " Dikurangi berapa stok?: ";
       cin >> stokKurang;
-      if (daftarItem[pilihan - 1]->getStok() >= stokKurang)
-      {
+      if (daftarItem[pilihan - 1]->getStok() >= stokKurang){
         daftarItem[pilihan - 1]->setStok(daftarItem[pilihan - 1]->getStok() - stokKurang);
         cout << " Stok barang berhasil dikurangi." << endl;
       }
-      else
-      {
+      else{
         cout << " Stok tidak cukup!" << endl;
       }
     }
-    else
-    {
+    else{
       cout << " Pilihan tidak valid!" << endl;
     }
   }
@@ -219,8 +206,7 @@ public:
   {
     system("cls");
     cout << " ===== Stock Barang =====" << endl;
-    for (int i = 0; i < daftarItem.size(); i++)
-    {
+    for (int i = 0; i < daftarItem.size(); i++){
       cout << " Nama Barang: " << daftarItem[i]->getNama() << endl;
       cout << " Stok: " << daftarItem[i]->getStok() << endl;
     }
@@ -248,20 +234,17 @@ public:
     system("cls");
     int pilihan;
     cout << " Pilih pegawai yang ingin dihapus: " << endl;
-    for (int i = 0; i < daftarPegawai.size(); i++)
-    {
+    for (int i = 0; i < daftarPegawai.size(); i++){
       cout << i + 1 << ". " << daftarPegawai[i].getNama() << " - " << endl;
     }
     cout << " Pilih: ";
     cin >> pilihan;
 
-    if (pilihan >= 1 && pilihan <= daftarPegawai.size())
-    {
+    if (pilihan >= 1 && pilihan <= daftarPegawai.size()){
       daftarPegawai.erase(daftarPegawai.begin() + pilihan - 1);
       cout << " Pegawai berhasil dihapus." << endl;
     }
-    else
-    {
+    else{
       cout << " Pilihan tidak valid!" << endl;
     }
   }
@@ -272,8 +255,7 @@ public:
     cout << " ===== Data Pegawai =====" << endl;
     cout << "-----------------------------------------------------" << endl;
     cout << "\t|   Nama    |    Umur    |     Asal Kota     |" << endl;
-    for (int i = 0; i < daftarPegawai.size(); i++)
-    {
+    for (int i = 0; i < daftarPegawai.size(); i++){
       cout << "\t" << daftarPegawai[i].getNama() << "\t\t" << daftarPegawai[i].getumur() << "\t" << daftarPegawai[i].getkota() << endl;
     }
   }
@@ -284,13 +266,11 @@ public:
     cout << " Masukkan password: ";
     cin >> inputPassword;
 
-    if (inputPassword == password)
-    {
+    if (inputPassword == password){
       cout << " Login berhasil." << endl;
       return true;
     }
-    else
-    {
+    else{
       cout << " Akses ditolak." << endl;
       return false;
     }
@@ -305,8 +285,7 @@ private:
 public:
   ~Toko()
   {
-    for (Item *item : daftarItem)
-    {
+    for (Item *item : daftarItem){
       delete item;
     }
   }
@@ -333,8 +312,7 @@ public:
       cout << " ===== Menu Belanja =====" << endl;
       cout << "No  |     Nama Barang     |     Harga Barang    |" << endl;
       cout << "-----------------------------------------------------" << endl;
-      for (int i = 0; i < daftarItem.size(); i++)
-      {
+      for (int i = 0; i < daftarItem.size(); i++){
         cout << i + 1 << "\t" << daftarItem[i]->getNama() << "\t\tRp" << daftarItem[i]->getprice() << endl;
       }
       cout << "-----------------------------------------------------" << endl;
@@ -343,26 +321,22 @@ public:
       cout << " Pilih: ";
       cin >> pilihan;
 
-      if (pilihan >= 1 && pilihan <= daftarItem.size())
-      {
+      if (pilihan >= 1 && pilihan <= daftarItem.size()){
         cout << " Jumlah: ";
         cin >> jumlah;
 
-        if (jumlah > 0)
-        {
+        if (jumlah > 0){
           Item *selectedItem = daftarItem[pilihan - 1];
           kasir.prosesTransaksi(selectedItem, jumlah);
           totalPembayaran += selectedItem->getprice() * jumlah;
           cout << " Transaksi berhasil!" << endl;
         }
-        else
-        {
+        else{
           cout << " Jumlah tidak valid!" << endl;
         }
       }
 
-      else if (pilihan != 0)
-      {
+      else if (pilihan != 0){
         cout << " Pilihan tidak valid!" << endl;
       }
 
@@ -376,8 +350,8 @@ public:
   void menuAdmin() 
   {
     Admin admin("1234");
-    if (!admin.login())
-    {
+    
+    if (!admin.login()){
       return; 
     }
 
@@ -398,38 +372,38 @@ public:
       cout << " Pilih: ";
       cin >> pilihan;
 
-      switch (pilihan)
-      {
-      case 1:
-        system("cls");
-        admin.tambahBarang(daftarItem);
-        break;
-      case 2:
-        system("cls");
-        admin.hapusBarang(daftarItem);
-        break;
-      case 3:
-        system("cls");
-        admin.tambahStok(daftarItem);
-        break;
-      case 4:
-        system("cls");
-        admin.kurangiStok(daftarItem);
-        break;
-      case 5:
-        system("cls");
-        admin.lihatStock(daftarItem);
-        break;
-      case 6:
-        system("cls");
-        menuDataPegawai(admin);
-        break;
-      case 0:
-        break;
-      default:
-        cout << " Pilihan tidak valid!" << endl;
-        break;
+      switch (pilihan){
+        case 1:
+          system("cls");
+          admin.tambahBarang(daftarItem);
+          break;
+        case 2:
+          system("cls");
+          admin.hapusBarang(daftarItem);
+          break;
+        case 3:
+          system("cls");
+          admin.tambahStok(daftarItem);
+          break;
+        case 4:
+          system("cls");
+          admin.kurangiStok(daftarItem);
+          break;
+        case 5:
+          system("cls");
+          admin.lihatStock(daftarItem);
+          break;
+        case 6:
+          system("cls");
+          menuDataPegawai(admin);
+          break;
+        case 0:
+          break;
+        default:
+          cout << " Pilihan tidak valid!" << endl;
+          break;
       }
+
     } while (pilihan != 0);
   }
 
@@ -449,22 +423,21 @@ public:
       cout << " Pilih: ";
       cin >> pilihan;
 
-      switch (pilihan)
-      {
-      case 1:
-        admin.lihatDataPegawai();
-        break;
-      case 2:
-        admin.tambahPegawai();
-        break;
-      case 3:
-        admin.hapusPegawai();
-        break;
-      case 0:
-        break;
-      default:
-        cout << " Pilihan tidak valid!" << endl;
-        break;
+      switch (pilihan){
+        case 1:
+          admin.lihatDataPegawai();
+          break;
+        case 2:
+          admin.tambahPegawai();
+          break;
+        case 3:
+          admin.hapusPegawai();
+          break;
+        case 0:
+          break;
+        default:
+          cout << " Pilihan tidak valid!" << endl;
+          break;
       }
     } while (pilihan != 0);
   }
@@ -499,29 +472,28 @@ int main()
     cout << " Pilih: ";
     cin >> menu;
 
-    switch (menu)
-    {
-    case 1:
-      system("cls");
-      cout << " " << endl;
-      cout << " ==============================" << endl;
-      cout << "          Menu Belanja        " << endl;
-      cout << " ==============================" << endl;
-      toko.mulaiBelanja();
-      break;
-    case 2:
-      cout << " ==============================" << endl;
-      cout << "          Menu Admin          " << endl;
-      cout << " ==============================" << endl;
-      toko.menuAdmin();
-      break;
-    case 0:
-      cout << " Terima kasih telah mengunjungi Mandiri Store!" << endl;
-      break;
-    default:
-      cout << " Pilihan tidak valid!" << endl;
-      break;
-    }
+    switch (menu){
+      case 1:
+        system("cls");
+        cout << " " << endl;
+        cout << " ==============================" << endl;
+        cout << "          Menu Belanja        " << endl;
+        cout << " ==============================" << endl;
+        toko.mulaiBelanja();
+        break;
+      case 2:
+        cout << " ==============================" << endl;
+        cout << "          Menu Admin          " << endl;
+        cout << " ==============================" << endl;
+        toko.menuAdmin();
+        break;
+      case 0:
+        cout << " Terima kasih telah mengunjungi Mandiri Store!" << endl;
+        break;
+      default:
+        cout << " Pilihan tidak valid!" << endl;
+        break;
+      }
   } while (menu != 0);
 
   return 0;
