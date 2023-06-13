@@ -25,7 +25,7 @@ public:
     return price;
   }
 
-  int getStok() 
+  int getStok()
   {
     return stok;
   }
@@ -75,12 +75,12 @@ public:
     totalprice = item->getprice() * jumlah;
   }
 
-  int getTotalprice() 
+  int getTotalprice()
   {
     return totalprice;
   }
 
-  void cetakTransaksi() 
+  void cetakTransaksi()
   {
     cout << " Transaksi: " << item->getNama() << " x " << jumlah << endl;
     cout << " Total price: Rp" << getTotalprice() << endl;
@@ -92,12 +92,14 @@ class Kasir
 public:
   void prosesTransaksi(Item *item, int jumlah)
   {
-    if (item->getStok() >= jumlah){
+    if (item->getStok() >= jumlah)
+    {
       item->setStok(item->getStok() - jumlah);
       Transaksi transaksi(item, jumlah);
       transaksi.cetakTransaksi();
     }
-    else{
+    else
+    {
       cout << " Stok tidak cukup!" << endl;
     }
   }
